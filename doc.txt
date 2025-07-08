@@ -1,0 +1,65 @@
+php artisan make:migration add_details_to_users_table
+
+	$table->string('phone')->nullable();
+        $table->string('address')->nullable();
+        $table->enum('category', ['Student', 'Teacher', 'Others'])->default('Student');
+
+	$table->dropColumn(['phone', 'address', 'category']);
+
+php artisan migrate
+
+<!-- Phone -->
+<flux:input
+    wire:model="phone"
+    :label="__('Phone')"
+    type="text"
+    required
+    autocomplete="tel"
+    :placeholder="__('Phone number')"
+/>
+@error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+<!-- Address -->
+<flux:input
+    wire:model="address"
+    :label="__('Address')"
+    type="text"
+    required
+    autocomplete="street-address"
+    :placeholder="__('Your Address')"
+/>
+@error('address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+<!-- Category -->
+<div class="mt-4">
+    <label for="category" class="block text-sm font-medium text-gray-700">{{ __('Category') }}</label>
+    <select id="category" wire:model="category" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        <option value="Student">{{ __('Student') }}</option>
+        <option value="Teacher">{{ __('Teacher') }}</option>
+        <option value="Others">{{ __('Others') }}</option>
+    </select>
+    @error('category') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+</div>
+
+
+	'phone' => 'required|string|max:15',
+    'address' => 'required|string|max:255',
+    'category' => 'required|in:Student,Teacher,Others',
+
+	public string $phone = '';
+  	public string $address = '';
+    public string $category = 'Student'; // Default category
+
+    'phone' => ['required', 'string', 'max:15'],
+    'address' => ['required', 'string', 'max:255'],
+    'category' => ['required', 'string', 'in:Student,Teacher,Others'],
+
+
+protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'phone',
+        'address',
+        'category',
+    ];
