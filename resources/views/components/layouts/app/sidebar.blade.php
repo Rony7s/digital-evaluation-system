@@ -17,8 +17,19 @@
                 </flux:navlist.group>
             </flux:navlist>
 
-            <flux:spacer />
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Platform')" class="grid">
+                    <flux:navlist.item icon="home" href="http://localhost/eDAD-Exam-Platform">{{ __('Quiz Platform') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="http://localhost/eDAD-Exam-Platform/new/index.html">{{ __('Create') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="#">{{ __('Join') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="#">{{ __('Result T') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="#">{{ __('Result S') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="#">{{ __('About') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
 
+ 
+            <flux:spacer />
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/rony7s" target="_blank">
                 {{ __('Repository') }}

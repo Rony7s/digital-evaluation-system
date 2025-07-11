@@ -19,4 +19,10 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+// For Quiz
+Route::get('/quiz', function(){
+    return "Hello Quiz";
+});
+
+
 require __DIR__.'/auth.php';
