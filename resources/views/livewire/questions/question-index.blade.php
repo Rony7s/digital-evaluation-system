@@ -14,10 +14,11 @@
             wire:model.debounce.500ms="search"
             placeholder="{{ __('Search Questions') }}"
             class="border border-gray-300 rounded px-3 py-2 w-full max-w-xs"
+            id="searchInput"
         />
     </div>
 
-    <table class="mt-4 w-full border-collapse">
+    <table class="mt-4 w-full border-collapse" id="questionsTable">
         <thead>
             <tr class="bg-gray-100">
                 <th class="border px-4 py-2">{{ __('No') }}</th>
@@ -47,3 +48,19 @@
             @endforeach
         </tbody>
 </div>
+
+<script>
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#questionsTable tbody tr');
+
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      if(text.includes(filter)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script>
