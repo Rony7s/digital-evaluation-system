@@ -34,4 +34,6 @@ class Question extends Model
         'answer' => 'string',
         'comment' => 'string',  // fixed here
     ];
+
+    
 }

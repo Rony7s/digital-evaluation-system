@@ -7,6 +7,13 @@ use App\Livewire\Questions\QuestionIndex;
 use App\Livewire\Questions\QuestionCreate;
 use App\Livewire\Questions\QuestionEdit;
 
+use App\Livewire\Exams\ExamIndex;
+use App\Livewire\Exams\ExamCreate;
+use App\Livewire\Exams\ExamEdit;
+
+use App\Livewire\Quiz\Join;
+use App\Livewire\Quiz\Start;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +30,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('create', QuestionCreate::class)->name('questions.create');
     Route::get('edit/{id}', QuestionEdit::class)->name('questions.edit');
 
-    
+    Route::get('exam/index', ExamIndex::class)->name('exams.index');
+    Route::get('exam/create', ExamCreate::class)->name('exam.create');
+    Route::get('exam/edit/{id}', ExamEdit::class)->name('exam.edit');
+
 
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
@@ -31,10 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-// For Quiz
-Route::get('/quiz', function(){
-    return "Hello Quiz";
-});
+// For Quiz 
+Route::get('/quiz/join', Join::class)->name('quiz.join');
+Route::get('/quiz/start/{examCode}/{studentId}', Start::class)->name('quiz.start');
 
 
 require __DIR__.'/auth.php';
