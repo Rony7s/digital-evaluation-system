@@ -17,17 +17,14 @@
                     <flux:navlist.item icon="home" :href="route('questions.index')" :current="request()->routeIs('questions.index')" wire:navigate>{{ __('Questions Bank') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('exams.index')" :current="request()->routeIs('exams.index')" wire:navigate>{{ __('Exam') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('quiz.join')" :current="request()->routeIs('quiz.join')" wire:navigate>{{ __('Join') }}</flux:navlist.item>
+                   
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" href="http://localhost/eDAD-Exam-Platform">{{ __('Quiz Platform') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" href="http://localhost/eDAD-Exam-Platform/new/index.html">{{ __('Create') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" href="#">{{ __('Join') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" href="#">{{ __('Result T') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" href="#">{{ __('Result S') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" href="#">{{ __('About') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" href="http://localhost/eDAD-Exam-Platform">{{ __('Survey Platform') }}</flux:navlist.item>
+
                 </flux:navlist.group>
             </flux:navlist>
 

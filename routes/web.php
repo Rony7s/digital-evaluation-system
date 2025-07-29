@@ -10,6 +10,7 @@ use App\Livewire\Questions\QuestionEdit;
 use App\Livewire\Exams\ExamIndex;
 use App\Livewire\Exams\ExamCreate;
 use App\Livewire\Exams\ExamEdit;
+use App\Livewire\Exams\ExamResult;
 
 use App\Livewire\Quiz\Join;
 use App\Livewire\Quiz\Start;
@@ -33,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('exam/index', ExamIndex::class)->name('exams.index');
     Route::get('exam/create', ExamCreate::class)->name('exam.create');
     Route::get('exam/edit/{id}', ExamEdit::class)->name('exam.edit');
+    Route::get('exam/result/{id}', ExamResult::class)->name('exam.result');
 
 
 

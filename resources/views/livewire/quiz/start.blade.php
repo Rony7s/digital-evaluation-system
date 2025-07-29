@@ -21,12 +21,13 @@
           <h3 class="font-semibold text-lg text-gray-800">{{ $question->questionText }}</h3>
           <ul class="space-y-2">
             @foreach (['A', 'B', 'C', 'D'] as $option)
-              @php $optionKey = 'option' . array_search($option, ['A','B','C','D']) + 1; @endphp
+              @php $optionKey = 'option' . (array_search($option, ['A','B','C','D']) + 1); @endphp
               <li>
                 <label class="inline-flex items-center">
-                  <input type="radio" 
-                         wire:model="answers.{{ $question->id }}" 
-                         value="{{ $option }}" 
+                  <input type="radio"
+                         name="answers[{{ $question->id }}]"  {{-- ✅ Important fix --}}
+                         wire:model="answers.{{ $question->id }}"
+                         value="{{ $option }}"
                          class="mr-2">
                   {{ $question->$optionKey }}
                 </label>
@@ -43,11 +44,12 @@
             Clear Answer
           </button>
 
-          <!-- Optional Debug -->
-          <div class="mt-3 text-sm text-gray-500">
+          <!-- Optional Debug Info -->
+          {{-- <div class="mt-3 text-sm text-gray-500">
             <p><strong>Answer:</strong> {{ strtoupper($question->answer) }}</p>
             <p><strong>Comment:</strong> {{ $question->comment }}</p>
-          </div>
+          </div> --}}
+          
         </div>
       @endforeach
 
@@ -74,12 +76,14 @@
   </div>
 </div>
 
-<!-- Clear selected radio buttons -->
+<!-- ✅ JavaScript for Clear Answer -->
 <script>
   function clearAnswer(questionId) {
     const radios = document.getElementsByName(`answers[${questionId}]`);
     radios.forEach(radio => radio.checked = false);
+
+    // Update Livewire model
     window.livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id'))
-          .set(`answers.${questionId}`, null);
+      .set(`answers.${questionId}`, null);
   }
 </script>

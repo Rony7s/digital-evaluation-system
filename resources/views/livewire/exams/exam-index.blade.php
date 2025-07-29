@@ -62,6 +62,7 @@
                             onclick="return confirm('Are you sure you want to delete this exam?')"
                         >Delete</button>
                         <a href="{{ route('exam.edit', $exam->id) }}" class="text-blue-600 hover:underline">{{ __('Edit') }}</a>
+                        <a href="{{ route('exam.result', $exam->id) }}" class="text-blue-600 hover:underline">{{ __('Result') }}</a>
 
                         
                     </td>
