@@ -36,16 +36,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('exam/edit/{id}', ExamEdit::class)->name('exam.edit');
     Route::get('exam/result/{id}', ExamResult::class)->name('exam.result');
 
+    
+
 
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+    
 });
 
 // For Quiz 
 Route::get('/quiz/join', Join::class)->name('quiz.join');
 Route::get('/quiz/start/{examCode}/{studentId}', Start::class)->name('quiz.start');
 
+
+Route::view('about', 'about')->name('about');
 
 require __DIR__.'/auth.php';

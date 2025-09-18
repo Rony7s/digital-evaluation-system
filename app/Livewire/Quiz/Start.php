@@ -55,10 +55,11 @@ class Start extends Component
         );
 
         session()->flash('message', 'Quiz submitted successfully!');
-        return redirect()->route('quiz.start', [
-            'examCode' => $this->examCode,
-            'studentId' => $this->studentId,
-        ]);
+        // return redirect()->route('quiz.start', [
+        //     'examCode' => $this->examCode,
+        //     'studentId' => $this->studentId,
+        // ]);
+        return redirect()->route('quiz.join');
     }
 
     public function render()

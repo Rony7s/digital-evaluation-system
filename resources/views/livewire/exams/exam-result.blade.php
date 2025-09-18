@@ -31,10 +31,9 @@
             @endforelse
         </tbody>
     </table>
-    <div class="mt-4">
-        <a href="{{ route('exams.index') }}" class="text-blue-500 hover:underline">Back to Exams</a>
-    </div>
+    
     {{-- ANalyzed Results --}}
+    <h1 style="margin:10px;">Summary</h1>
     <table class="table-auto   border-collapse border border-gray-300">
         <thead>
             <tr class="bg-gray-200">
@@ -86,7 +85,7 @@
 
     {{-- ANalyzed Results --}}
     <table class="table-auto   border-collapse border border-gray-300">
-        <h1>Parsentage</h1>
+        <h1 style="margin:10px;">Parsentage</h1>
         <thead>
             <tr class="bg-gray-200">
                 <th class="border px-4 py-2">NO</th>
@@ -104,26 +103,26 @@
                     <td class="border px-4 py-2">{{ $index+1 }}</td>
                       
                     @if ($result['R'] === 'A')
-                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['A'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['A'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @else
-                        <td class="border px-4 py-2">{{ round(($result['A'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2">{{ round(($result['A'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @endif
                     @if ($result['R'] === 'B')
-                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['B'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['B'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @else
-                        <td class="border px-4 py-2">{{ round(($result['B'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2">{{ round(($result['B'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @endif
                     @if ($result['R'] === 'C')
-                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['C'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['C'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @else
-                        <td class="border px-4 py-2">{{ round(($result['C'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2">{{ round(($result['C'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @endif
                     @if ($result['R'] === 'D')
-                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['D'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2 bg-green-200">{{ round(($result['D'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @else
-                        <td class="border px-4 py-2">{{ round(($result['D'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                        <td class="border px-4 py-2">{{ round(($result['D'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
                     @endif
-                    <td class="border px-4 py-2">{{  round(($result['X'] / ($result['A']+$result['B']+$result['C']+$result['D'])) * 100, 2) . '%' }}</td>
+                    <td class="border px-4 py-2">{{  round(($result['X'] / ($result['A']+$result['B']+$result['C']+$result['D']+$result['X'])) * 100, 2) . '%' }}</td>
 
                     <td class="border px-4 py-2">{{ $result['R'] }}</td>
                 </tr> 
@@ -134,4 +133,7 @@
             @endforelse
         </tbody>
     </table>
+    <div class="mt-4">
+        <a href="{{ route('exams.index') }}" class="text-blue-500 hover:underline">Back to Exams</a>
+    </div>
 </div>

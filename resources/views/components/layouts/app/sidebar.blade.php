@@ -17,7 +17,8 @@
                     <flux:navlist.item icon="home" :href="route('questions.index')" :current="request()->routeIs('questions.index')" wire:navigate>{{ __('Questions Bank') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('exams.index')" :current="request()->routeIs('exams.index')" wire:navigate>{{ __('Exam') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('quiz.join')" :current="request()->routeIs('quiz.join')" wire:navigate>{{ __('Join') }}</flux:navlist.item>
-                   
+                    <flux:navlist.item icon="home" :href="route('about')" :current="request()->routeIs('about')" wire:navigate>{{ __('About') }}</flux:navlist.item>
+
                 </flux:navlist.group>
             </flux:navlist>
 

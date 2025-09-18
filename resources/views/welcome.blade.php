@@ -8,7 +8,7 @@
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/logo.jpg" sizes="180x180">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,28 +23,56 @@
             body {
                 width: 100%;
                 height: 100%;
-                background-image: url("{{ asset('images/photo.jpg') }}");
+                /* background-image: url("{{ asset('images/learner.jpg') }}");
                 background-size: cover;
-                background-position: center;
+                background-position: center; */
+                background:#77a3cf;
+            }
+            .my-title{
+                font-size: 25px;
+                margin-top: -10px;
+                margin-bottom: -35px;
+                color: #f8f9fa;
+                font-weight: 700;
+            }
+            .welcome{
+                background: linear-gradient(135deg,  #297395 50%, #FFFFFF 0%, #297395 100%);
+                height:500px;
+            }
+            .learner{
+                width:300px;
+            }
+            .footer{
+                background: linear-gradient(135deg,  #297395 25%, #FFFFFF 50%, #297395 25%);
+                font-size:20px;
+                width:100%;
+                text-align:center;
+                padding:10px;
+                 
+                margin-bottom:-20px;
+            }
+            .single-content{
+                margin:10px;
+                padding:10px;
+            }
+            .single-content p{
+                font-size: 18px;
+                line-height: 1.6;
+                color: #333;
             }
         </style>
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
+            <h1 class="my-title">{{ config('app.name', 'Laravel') }}</h1>
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
+                     
                     @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
+                        <a href="{{ url('/dashboard') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal" > Dashboard </a>
                     @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
+                        <a href="{{ route('login') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#FFFFFF] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal" >
                             Log in
                         </a>
 
@@ -60,12 +88,29 @@
             @endif
         </header>
         <div class="welcome flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <h1>{{ config('app.name', 'Laravel') }}</h1>
-            <br>
+             
+            <img class="learner" src="images/learner.jpg">
+            
         </div>
+        <div class="Home-content">
+            <div class="single-content">
+                <h1>SmartExam Platform</h1>
+                <hr>
+                <p><em>SmartExam Platform</em>An All-in-One System for Secure Exam Delivery, Automated Scoring, and Real-Time Performance Insights.<em>SmartExam Platform</em> is an all-in-one online exam management system designed for both teachers and students. Teachers can create MCQ-based exams for specific sessions like midterms or finals, set questions in either private mode (for their own use) or public mode (shared with other teachers), and provide learning resources. Students can join scheduled exams at the assigned time, view  instant results, and benefit from question evaluations and performance analysis that help improve learning outcomes</p>
+    
+            </div>
+            
+        </div>
+        
+        
+
 
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+        {{-- need a footer  --}}
+        <div class="footer">
+            <p>All right Received @ 2025</p>
+        </div>
     </body>
 </html>
