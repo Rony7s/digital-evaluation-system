@@ -31,6 +31,64 @@
             @endforelse
         </tbody>
     </table>
+    <br>
+    <h1 style="margin:10px;">Statistics</h1>
+    @php
+    // Collect all scores from $results
+    $scores = collect($results)->pluck('score');
+
+    if ($scores->isNotEmpty()) {
+        // Mean
+        $mean = $scores->avg();
+
+        // Median
+        $sorted = $scores->sort()->values();
+        $count = $sorted->count();
+        $median = $count % 2 === 0
+            ? ($sorted[$count/2 - 1] + $sorted[$count/2]) / 2
+            : $sorted[floor($count/2)];
+
+        // Mode (value & count)
+        $modeValue = $scores->countBy()->sortDesc()->keys()->first();
+        $modeCount = $scores->countBy()->max();
+
+        // Variance & Std Dev
+        $variance = $scores->map(fn($x) => pow($x - $mean, 2))->avg();
+        $std = sqrt($variance);
+    } else {
+        $mean = $median = $modeValue = $modeCount = $variance = $std = null;
+    }
+@endphp
+
+<table class="table-auto w-full border-collapse border border-gray-300">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="border px-4 py-2">Mean</th>
+            <th class="border px-4 py-2">Median</th>
+            <th class="border px-4 py-2">Mode Value</th>
+            <th class="border px-4 py-2">Mode Count</th>
+            <th class="border px-4 py-2">Standard Deviation</th>
+            <th class="border px-4 py-2">Variance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if($scores->isNotEmpty())
+            <tr>
+                <td class="border px-4 py-2">{{ number_format($mean, 2) }}</td>
+                <td class="border px-4 py-2">{{ $median }}</td>
+                <td class="border px-4 py-2">{{ $modeValue }}</td>
+                <td class="border px-4 py-2">{{ $modeCount }}</td>
+                <td class="border px-4 py-2">{{ number_format($std, 2) }}</td>
+                <td class="border px-4 py-2">{{ number_format($variance, 2) }}</td>
+            </tr>
+        @else
+            <tr>
+                <td colspan="6" class="text-center text-gray-500 py-4">No submissions yet.</td>
+            </tr>
+        @endif
+    </tbody>
+</table>
+<br>
     
     {{-- ANalyzed Results --}}
     <h1 style="margin:10px;">Summary</h1>

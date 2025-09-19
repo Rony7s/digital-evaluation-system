@@ -1,6 +1,10 @@
 <div class="relative mb-6 w-full">
   <h1 class="text-2xl font-bold">{{ __('Exam Time') }}</h1>
   <p class="text-lg text-gray-600 mb-6">{{ __('This is quiz time') }}</p>
+  {{-- <p class="text-sm text-gray-500">{{ $duration }} minutes left</p> --}}
+  <div class="absolute top-0 right-0 p-4">
+    <x-myLayouts.stop :duration="$duration" />
+  </div>
 
   @if (session()->has('message'))
     <div class="mb-4 p-3 rounded-lg bg-green-100 text-green-800 border border-green-300">
